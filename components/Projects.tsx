@@ -40,7 +40,13 @@ const projects = [
     image: "/projects/aura-beauty-lounge.png",
     visit: "https://aura-beauty-lounge.vercel.app/",
   },
-
+  {
+    title: "ClaroVista Digital",
+    description:
+      "A conversion-focused agency website built to clearly communicate value, guide visitors through decisions, and encourage high-intent enquiries.",
+    image: "/projects/clarovista-digital.png",
+    visit: "https://clarovistadigital.com",
+  },
 ]
 
 export default function Projects() {
