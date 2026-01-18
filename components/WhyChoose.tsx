@@ -35,7 +35,7 @@ const reasons = [
     icon: UserCheck,
   },
   {
-    title: "Focused, not generic",
+    title: "Built for conversion",
     short:
       "We don’t try to do everything. We build conversion-focused websites, and we do them well.",
     long:

@@ -33,6 +33,14 @@ const projects = [
     image: "/projects/fitcoach.png",
     visit: "https://fitcoach-sable.vercel.app/",
   },
+  {
+    title: "Aura Beauty Lounge",
+    description:
+      "A modern beauty lounge website designed to highlight services, build trust, and make bookings feel simple through a clean, elegant layout.",
+    image: "/projects/aura-beauty-lounge.png",
+    visit: "https://aura-beauty-lounge.vercel.app/",
+  },
+
 ]
 
 export default function Projects() {

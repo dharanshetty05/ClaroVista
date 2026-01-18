@@ -17,8 +17,18 @@ const industries = [
 ]
 
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+
   return (
-    <section className="bg-[#fefbf8] min-h-screen flex items-center">
+    <section id="hero" className="bg-[#fefbf8] min-h-screen flex items-center">
       <div className="mx-auto max-w-[1440px] px-6 xl:pl-32 w-full">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -59,14 +69,14 @@ export default function Hero() {
 
             {/* SUBHEADLINE */}
             <p className="mt-6 sm:mt-8 mx-auto lg:mx-0 max-w-xl sm:max-w-2xl text-lg sm:text-xl md:text-2xl text-[#26201b]">
-              We craft high-performance websites that guide visitors, drive action, and grow revenue.
+              We craft high-performance websites that turn visitors into enquiries, customers, and revenue.
             </p>
 
             {/* CTAs */}
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-6 items-center justify-center lg:justify-start">
               {/* Primary CTA */}
-              <a
-                href="#contact"
+              <button
+                onClick={() => scrollToSection("contact")}
                 className="
                   inline-flex items-center justify-center
                   rounded-full
@@ -78,11 +88,11 @@ export default function Hero() {
                 "
               >
                 Book a call
-              </a>
+              </button>
 
               {/* Secondary CTA */}
-              <a
-                href="#projects"
+              <button
+                onClick={() => scrollToSection("projects")}
                 className="
                   inline-flex items-center gap-2
                   text-base sm:text-lg font-medium
@@ -92,7 +102,7 @@ export default function Hero() {
               >
                 Explore our work
                 <span aria-hidden>→</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -111,20 +121,19 @@ export default function Hero() {
             >
               {[...industries, ...industries].map((item, i) => (
                 <span
-  key={i}
-  className="
-    text-sm sm:text-base
-    uppercase tracking-[0.18em]
-    font-medium
-    text-[#26201b]/80
-  "
-  style={{
-    textShadow: "0 0 12px rgba(255,117,31,0.12)",
-  }}
->
-  {item}
-</span>
-
+                  key={i}
+                  className="
+                    text-sm sm:text-base
+                    uppercase tracking-[0.18em]
+                    font-medium
+                    text-[#26201b]/80
+                  "
+                  style={{
+                    textShadow: "0 0 12px rgba(255,117,31,0.12)",
+                  }}
+                >
+                  {item}
+                </span>
               ))}
             </motion.div>
           </div>

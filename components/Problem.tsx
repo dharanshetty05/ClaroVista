@@ -98,11 +98,11 @@ export default function Problem() {
           className="mt-20 max-w-2xl"
         >
           <p className="text-lg text-[#6f6761]">
-            Most visitors don’t leave because they aren’t interested.
+            Visitors don’t leave because they aren’t interested.
           </p>
 
           <p className="mt-3 text-xl font-medium text-[#26201b]">
-            They leave because deciding feels harder than it should.
+            They leave because deciding feels harder than leaving.
           </p>
         </motion.div>
       </div>

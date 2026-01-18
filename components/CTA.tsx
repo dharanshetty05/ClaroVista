@@ -3,6 +3,16 @@
 import { motion } from "framer-motion"
 
 export default function CTA() {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+
   return (
     <section className="bg-[#fefbf8] py-24 sm:py-12">
       <div className="mx-auto max-w-7xl px-6">
@@ -21,7 +31,7 @@ export default function CTA() {
           {/* Headline */}
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
             Turn your website into a{" "}
-            <span className="text-[#ff751f]">money-making machine</span>
+            <span className="text-[#ff751f]">revenue-generating asset</span>
           </h2>
 
           {/* Supporting line */}
@@ -33,8 +43,8 @@ export default function CTA() {
           {/* CTAs */}
           <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
             {/* Primary */}
-            <a
-              href="#contact"
+            <button
+              onClick={() => scrollToSection("contact")}
               className="
                 inline-flex items-center justify-center
                 rounded-full
@@ -46,11 +56,11 @@ export default function CTA() {
               "
             >
               Book a call
-            </a>
+            </button>
 
             {/* Secondary */}
-            <a
-              href="#projects"
+            <button
+              onClick={() => scrollToSection("projects")}
               className="
                 inline-flex items-center gap-2
                 text-base font-medium
@@ -59,7 +69,7 @@ export default function CTA() {
               "
             >
               View selected work <span aria-hidden>→</span>
-            </a>
+            </button>
           </div>
 
           {/* Authority micro-line */}
