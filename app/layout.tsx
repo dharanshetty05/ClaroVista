@@ -22,6 +22,11 @@ export const metadata: Metadata = {
 
   metadataBase: new URL("https://clarovista.vercel.app"),
 
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
   openGraph: {
     title: "ClaroVista Digital — Conversion-Focused Websites",
     description:
