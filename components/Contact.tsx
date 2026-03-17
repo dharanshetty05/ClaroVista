@@ -32,13 +32,18 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <form className="mt-16 space-y-7">
+          <form
+            action="https://formspree.io/f/mvzwvrvr"
+            method="POST"
+            className="mt-16 space-y-7"
+          >
             <div>
               <label className="block text-sm text-[#26201b]/70">
                 Your name
               </label>
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="Your full name"
                 className="
@@ -58,6 +63,7 @@ export default function Contact() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="you@business.com"
                 className="
@@ -77,6 +83,7 @@ export default function Contact() {
               </label>
               <textarea
                 rows={4}
+                name="message"
                 required
                 placeholder="More enquiries, bookings, credibility, sales, or launching properly for the first time"
                 className="
@@ -89,6 +96,12 @@ export default function Contact() {
                 "
               />
             </div>
+
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Website Enquiry - ClaroVista"
+            />
 
             {/* Primary CTA */}
             <button
@@ -112,10 +125,13 @@ export default function Contact() {
 
           {/* Trust cues */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-[#26201b]/70">
-            <div className="flex items-center gap-2">
+            <a
+              href="mailto:clarovistadigital@gmail.com"
+              className="flex items-center gap-2 hover:text-[#26201b] transition"
+            >
               <Mail className="h-4 w-4 text-[#ff751f]" />
-              hello@clarovistadigital.com
-            </div>
+              Prefer email? clarovistadigital@gmail.com
+            </a>
 
             <div className="hidden sm:block text-[#26201b]/30">•</div>
 
