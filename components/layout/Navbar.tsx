@@ -40,6 +40,12 @@ export default function Navbar() {
               onClick={() => scrollToSection("process")}
               className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
             >
+              Process
+            </button>
+            <button
+              onClick={() => scrollToSection("how-we-work")}
+              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
+            >
               How we work
             </button>
             <button
@@ -47,12 +53,6 @@ export default function Navbar() {
               className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
             >
               Work
-            </button>
-            <button
-              onClick={() => scrollToSection("why")}
-              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
-            >
-              Why us
             </button>
 
             {/* Primary CTA */}
@@ -68,7 +68,7 @@ export default function Navbar() {
                 transition hover:shadow-[0_0_28px_rgba(255,117,31,0.6)]
               "
             >
-              Book a call
+              Free website review
             </button>
           </nav>
 
@@ -103,6 +103,15 @@ export default function Navbar() {
               }}
               className="text-[#26201b] text-left"
             >
+              Process
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("how-we-work")
+                setOpen(false)
+              }}
+              className="text-[#26201b] text-left"
+            >
               How we work
             </button>
             <button
@@ -113,15 +122,6 @@ export default function Navbar() {
               className="text-[#26201b] text-left"
             >
               Work
-            </button>
-            <button
-              onClick={() => {
-                scrollToSection("why")
-                setOpen(false)
-              }}
-              className="text-[#26201b] text-left"
-            >
-              Why us
             </button>
 
             {/* Mobile CTA */}
@@ -139,7 +139,7 @@ export default function Navbar() {
                 shadow-[0_0_20px_rgba(255,117,31,0.45)]
               "
             >
-              Book a call
+              Free website review
             </button>
           </nav>
         </div>

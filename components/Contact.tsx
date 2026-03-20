@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, Mail, MessageSquare, ArrowRight } from "lucide-react"
+import { Mail, ArrowRight, Instagram } from "lucide-react"
 
 export default function Contact() {
   return (
@@ -21,13 +21,17 @@ export default function Contact() {
             </p>
 
             <h2 className="mt-5 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
-              Let’s build a website that{" "}
-              <span className="text-[#ff751f]">prints money</span>
+              Get a free website review
             </h2>
 
             <p className="mt-6 text-lg text-[#6f6761]">
-              If you want a website built intentionally to attract,
-              guide, and convert the right visitors, you’re in the right place.
+              Send me your website and business context. We will give you 2-3
+              honest suggestions to improve it. No pitch.
+            </p>
+
+            <p className="mt-4 text-sm text-[#26201b]/70">
+              Currently working with a small number of service businesses to improve
+              their websites.
             </p>
           </div>
 
@@ -79,13 +83,33 @@ export default function Contact() {
 
             <div>
               <label className="block text-sm text-[#26201b]/70">
-                What are you building this website for?
+                Your website URL
+              </label>
+              <input
+                type="url"
+                name="website"
+                required
+                placeholder="https://yourwebsite.com"
+                className="
+                  mt-2 w-full rounded-2xl
+                  bg-white px-5 py-4
+                  text-[#26201b] placeholder-[#6f6761]
+                  outline-none
+                  ring-1 ring-[#26201b]/20
+                  focus:ring-[#ff751f]
+                "
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-[#26201b]/70">
+                What do you want this website to do better?
               </label>
               <textarea
                 rows={4}
                 name="message"
                 required
-                placeholder="More enquiries, bookings, credibility, sales, or launching properly for the first time"
+                placeholder="More enquiries, more bookings, clearer offer, better trust, or stronger CTA flow"
                 className="
                   mt-2 w-full rounded-2xl
                   bg-white px-5 py-4
@@ -100,7 +124,7 @@ export default function Contact() {
             <input
               type="hidden"
               name="_subject"
-              value="New Website Enquiry - ClaroVista"
+              value="New Free Website Review Request - ClaroVista"
             />
 
             {/* Primary CTA */}
@@ -117,10 +141,13 @@ export default function Contact() {
                 transition hover:shadow-[0_0_40px_rgba(255,117,31,0.6)]
               "
             >
-              <Calendar className="h-5 w-5" />
-              Book a call
+              Get a free website review
               <ArrowRight className="h-4 w-4" />
             </button>
+
+            <p className="mt-4 text-sm text-[#26201b]/70">
+              I’ll personally review your site and send 2-3 actionable suggestions.
+            </p>
           </form>
 
           {/* Trust cues */}
@@ -136,17 +163,19 @@ export default function Contact() {
             <div className="hidden sm:block text-[#26201b]/30">•</div>
 
             <a
-              href="https://wa.me/XXXXXXXXXX"
+              href="https://www.instagram.com/clarovistadigital"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[#26201b] transition"
             >
-              <MessageSquare className="h-4 w-4 text-[#ff751f]" />
-              WhatsApp available
+              <Instagram className="h-4 w-4 text-[#ff751f]" />
+              Instagram @clarovistadigital
             </a>
           </div>
 
           {/* Positioning line */}
           <p className="mt-8 text-xs text-[#26201b]/60 text-center">
-            We build from scratch for businesses that want it done right.
+            We build clear, conversion-focused websites for service businesses.
           </p>
         </motion.div>
       </div>

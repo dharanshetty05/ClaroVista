@@ -5,24 +5,24 @@ import { motion } from "framer-motion"
 const steps = [
   {
     step: "01",
-    title: "Get clarity first",
-    outcome: "We remove confusion before design even begins.",
+    title: "Discovery call (30-45 min)",
+    outcome: "We ask the questions most designers skip.",
     description:
-      "We get clear on what you offer, who it’s for, and where visitors hesitate before taking action.",
+      "We talk through what your business does, who your customers are, and what is stopping people from reaching out.",
   },
   {
     step: "02",
-    title: "Design for action",
-    outcome: "Every section answers the right question at the right time.",
+    title: "Wireframe + design (3-5 days)",
+    outcome: "You see the structure before visuals.",
     description:
-      "Your website is structured to guide visitors logically, not overwhelm them with information.",
+      "We map out page flow first so you can see exactly how the site will guide a visitor before a single colour is chosen.",
   },
   {
     step: "03",
-    title: "Build, launch, improve",
-    outcome: "A fast, conversion-ready site without unnecessary complexity.",
+    title: "Build + launch (5-7 days)",
+    outcome: "Clean development with a clear handover.",
     description:
-      "Clean development, quick launch, and refinements based on real behavior.",
+      "You get the live site plus a handover call so you know exactly what you have and how to update it.",
   },
 ]
 
@@ -43,17 +43,16 @@ export default function HowItWorks() {
           </p>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
-            A clear process.{" "}
-            <span className="text-[#ff751f]">Built to move fast.</span>
+            A simple 3-step process to get your site live quickly.
           </h2>
 
-          <p className="mt-6 text-[#6f6761] max-w-xl">
-            No bloated workflows or endless revisions. Just a clear, focused path to launch.
+          <p className="mt-6 text-[#6f6761] max-w-2xl">
+            Clear scope, direct communication, and fast execution from first call to launch.
           </p>
         </motion.div>
 
         {/* Steps */}
-        <div className="mt-16 grid gap-10 sm:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-3">
           {steps.map((step, index) => (
             <motion.div
               key={step.step}
@@ -65,21 +64,21 @@ export default function HowItWorks() {
                 ease: "easeOut",
                 delay: index * 0.1,
               }}
-              className="rounded-2xl border border-[#26201b]/10 bg-[#fefbf8] p-8 hover:border-[#ff751f]/40 transition-colors"
+              className="rounded-2xl border border-[#26201b]/10 bg-white p-8 hover:border-[#ff751f]/40 transition-colors"
             >
-              <p className="text-sm font-medium text-[#ff751f]">
-                {step.step}
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#ff751f]">
+                Step {step.step}
               </p>
 
-              <h3 className="mt-4 text-xl font-medium text-[#26201b]">
+              <h3 className="mt-3 text-xl font-bold text-[#26201b] leading-snug">
                 {step.title}
               </h3>
 
-              <p className="mt-3 text-sm font-medium text-[#26201b]/70">
+              <p className="mt-4 text-sm font-semibold text-[#26201b]/80">
                 {step.outcome}
               </p>
 
-              <p className="mt-4 text-[#6f6761]">
+              <p className="mt-2 text-sm text-[#6f6761] leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
@@ -92,10 +91,9 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-16 text-center text-sm text-[#26201b]/60"
+          className="mt-12 text-center text-sm text-[#26201b]/60"
         >
-          No long retainers. No confusing handoffs. Just a clear path to a
-          conversion-focused website.
+          No long retainers and no confusing handoffs. Just a clear path to a conversion-focused website.
         </motion.p>
       </div>
     </section>

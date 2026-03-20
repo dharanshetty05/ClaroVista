@@ -53,7 +53,7 @@ export default function Hero() {
                     "0 0 22px rgba(38,32,27,0.16), 0 0 44px rgba(38,32,27,0.08)",
                 }}
               >
-                Revenue-focused conversion websites
+                Get more bookings from your website
               </span>
 
               <span
@@ -63,13 +63,13 @@ export default function Hero() {
                     "0 0 34px rgba(255,117,31,0.38), 0 0 68px rgba(255,117,31,0.26)",
                 }}
               >
-                for growing businesses
+                without confusing your visitors
               </span>
             </h1>
 
             {/* SUBHEADLINE */}
-            <p className="mt-6 sm:mt-8 mx-auto lg:mx-0 max-w-xl sm:max-w-2xl text-lg sm:text-xl md:text-2xl text-[#26201b]">
-              We craft high-performance websites that turn visitors into enquiries, customers, and revenue.
+            <p className="mt-6 sm:mt-8 mx-auto lg:mx-0 max-w-2xl text-lg sm:text-xl md:text-2xl text-[#26201b]">
+              Clarity-driven landing pages for service businesses. We structure your page so visitors understand your offer and know exactly how to book.
             </p>
 
             {/* CTAs */}
@@ -87,7 +87,7 @@ export default function Hero() {
                   transition hover:shadow-[0_0_36px_rgba(255,117,31,0.6)]
                 "
               >
-                Book a call
+                Get a free website review
               </button>
 
               {/* Secondary CTA */}

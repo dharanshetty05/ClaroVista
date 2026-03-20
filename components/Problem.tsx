@@ -6,21 +6,21 @@ import { EyeOff, HelpCircle, MousePointerClick } from "lucide-react"
 const problems = [
   {
     icon: EyeOff,
-    title: "Unclear first impression",
+    title: "Confusing first scroll",
     description:
-      "Visitors don’t instantly understand what you offer or why it matters to them.",
+      "Visitors land, but can’t instantly tell what you do (or who it’s for).",
   },
   {
     icon: HelpCircle,
-    title: "Too many unanswered questions",
+    title: "Lack of direction",
     description:
-      "Pricing, process, credibility, next steps — all left to guesswork.",
+      "Important details (pricing, process, credibility, next step) are missing or unclear.",
   },
   {
     icon: MousePointerClick,
-    title: "No clear action to take",
+    title: "Weak CTA (or none)",
     description:
-      "People scroll, hesitate, and leave without ever engaging.",
+      "There’s no obvious next step, or booking feels like effort.",
   },
 ]
 
@@ -44,6 +44,11 @@ export default function Problem() {
             Traffic isn’t the issue.{" "}
             <span className="text-[#ff751f]">Clarity is.</span>
           </h2>
+
+          <p className="mt-6 text-lg text-[#6f6761]">
+            Most service websites don’t fail because of traffic.
+            They fail because visitors don’t know what to do.
+          </p>
         </motion.div>
 
         {/* Problem cards */}

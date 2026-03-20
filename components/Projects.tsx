@@ -7,43 +7,55 @@ import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 const projects = [
   {
     title: "Palmstone Anjuna Retreat",
-    description:
-      "A premium homestay website designed to showcase ambience, location, and stay experience with a calm, conversion-focused layout.",
+    problem:
+      "Message was broad, page flow felt scattered, and the primary action was not clear.",
+    changed:
+      "Clearer headline, simpler page flow, and a more obvious booking-oriented call to action.",
     image: "/projects/palmstone.png",
     visit: "http://palmstone-anjuna.vercel.app/",
   },
   {
     title: "The BrewStory Cafe",
-    description:
-      "A cafe website focused on storytelling, menu discovery, and local brand presence with a warm, approachable visual tone.",
+    problem:
+      "Brand story was present, but key details and next steps were hard to scan quickly.",
+    changed:
+      "Sharper headline, better information hierarchy, and clearer next-step actions for visitors.",
     image: "/projects/brewstory.png",
     visit: "https://brewstory-cafe.vercel.app/",
   },
   {
     title: "The Spice Table",
-    description:
-      "A restaurant showcase site built around menu clarity, atmosphere, and an inviting dine-in experience.",
+    problem:
+      "The page looked good visually but had weak content structure for decision-making.",
+    changed:
+      "Reordered key sections and clarified the reservation/enquiry path so visitors always know what to do next.",
     image: "/projects/spicetable.png",
     visit: "https://spice-table-website.vercel.app/",
   },
   {
     title: "FitCoach",
-    description:
-      "A fitness coaching platform with personalized workout plans, clean UI, and structured progression.",
+    problem:
+      "Offer positioning was unclear, and visitors had to work too hard to understand the service.",
+    changed:
+      "Repositioned the offer, improved page structure for quick scanning, and strengthened the main conversion action.",
     image: "/projects/fitcoach.png",
     visit: "https://fitcoach-sable.vercel.app/",
   },
   {
     title: "Aura Beauty Lounge",
-    description:
-      "A modern beauty lounge website designed to highlight services, build trust, and make bookings feel simple through a clean, elegant layout.",
+    problem:
+      "Service presentation felt cluttered and booking intent was diluted across the page.",
+    changed:
+      "Simplified the service blocks, clarified booking intent, and made the booking path the first obvious next step.",
     image: "/projects/aura-beauty-lounge.png",
     visit: "https://aura-beauty-lounge.vercel.app/",
   },
   {
     title: "ClaroVista Digital",
-    description:
-      "A conversion-focused agency website built to clearly communicate value, guide visitors through decisions, and encourage high-intent enquiries.",
+    problem:
+      "Positioning needed sharper language and stronger decision guidance for service-business owners.",
+    changed:
+      "Refined copy hierarchy, added trust where decisions are made, and strengthened the low-friction free-review CTA flow.",
     image: "/projects/clarovista-digital.png",
     visit: "https://clarovistadigital.com",
   },
@@ -87,8 +99,8 @@ export default function Projects() {
           </p>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b]">
-            See how strategy turns{" "}
-            <span className="text-[#ff751f]">websites into results</span>
+            Clarity-focused redesign{" "}
+            <span className="text-[#ff751f]">examples</span>
           </h2>
         </motion.div>
 
@@ -138,8 +150,22 @@ export default function Projects() {
                     {project.title}
                   </h3>
 
-                  <p className="mt-3 text-sm text-[#6f6761]">
-                    {project.description}
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-[#ff751f]">
+                    Clarity-focused redesign
+                  </p>
+
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#26201b]/65">
+                    Problem
+                  </p>
+                  <p className="mt-1 text-sm text-[#6f6761] leading-relaxed">
+                    {project.problem}
+                  </p>
+
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#26201b]/65">
+                    What was improved
+                  </p>
+                  <p className="mt-1 text-sm text-[#6f6761] leading-relaxed">
+                    {project.changed}
                   </p>
 
                   <a

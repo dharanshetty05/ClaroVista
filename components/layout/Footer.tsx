@@ -51,10 +51,12 @@ export default function Footer() {
                 Email
               </a>
               <a
-                href="https://wa.me/XXXXXXXXXX"
+                href="https://www.instagram.com/clarovistadigital"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#cfc6be] hover:text-white transition"
               >
-                WhatsApp
+                Instagram
               </a>
             </div>
 
@@ -70,7 +72,7 @@ export default function Footer() {
                   transition
                 "
               >
-                Book a call
+                Free website review
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>

@@ -14,7 +14,7 @@ export default function CTA() {
   }
 
   return (
-    <section className="bg-[#fefbf8] py-24 sm:py-12">
+    <section className="bg-[#fefbf8] py-24 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -23,26 +23,21 @@ export default function CTA() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          {/* Lead-in */}
           <p className="text-sm uppercase tracking-wide text-[#26201b]/60">
-            Ready when you are
+            Free website review
           </p>
 
-          {/* Headline */}
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
-            Turn your website into a{" "}
-            <span className="text-[#ff751f]">revenue-generating asset</span>
+            If your website isn’t bringing enquiries, this is exactly what we
+            fix. Let’s take a look at yours.
           </h2>
 
-          {/* Supporting line */}
           <p className="mt-6 text-lg text-[#6f6761]">
-            If your website isn’t actively bringing in enquiries, leads, or
-            customers, it’s leaving money on the table. That’s what we fix.
+            Not ready to commit? Send me your website. I’ll share a quick
+            3-point review of what might be costing you enquiries or bookings.
           </p>
 
-          {/* CTAs */}
           <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
-            {/* Primary */}
             <button
               onClick={() => scrollToSection("contact")}
               className="
@@ -55,10 +50,9 @@ export default function CTA() {
                 transition hover:shadow-[0_0_40px_rgba(255,117,31,0.6)]
               "
             >
-              Book a call
+              Get a free website review
             </button>
 
-            {/* Secondary */}
             <button
               onClick={() => scrollToSection("projects")}
               className="
@@ -71,11 +65,6 @@ export default function CTA() {
               View selected work <span aria-hidden>→</span>
             </button>
           </div>
-
-          {/* Authority micro-line */}
-          <p className="mt-6 text-sm text-[#26201b]/60">
-            We work with a small number of businesses at a time.
-          </p>
         </motion.div>
       </div>
     </section>

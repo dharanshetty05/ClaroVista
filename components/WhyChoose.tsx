@@ -1,54 +1,43 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import {
-  Focus,
-  TrendingUp,
   UserCheck,
-  Target,
+  Focus,
+  Zap,
+  Compass,
 } from "lucide-react"
 
 const reasons = [
   {
-    title: "Clarity-first approach",
+    title: "No middlemen",
     short:
-      "We reduce confusion and guide decisions instead of piling on unnecessary sections or distractions.",
-    long:
-      "Most websites try to say everything at once. We focus on what matters most at each stage of a visitor’s decision so they always know where they are, what’s important, and what to do next.",
-    icon: Focus,
-  },
-  {
-    title: "Outcome over aesthetics",
-    short:
-      "Every design choice exists to drive action, not just to look impressive in a screenshot.",
-    long:
-      "Visual polish is meaningless without intent. Layout, copy, hierarchy, and flow are all designed to support a specific action, whether that’s an enquiry, a booking, or a conversation.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Direct collaboration",
-    short:
-      "You work directly with the person building your website. No hand-offs or layers.",
-    long:
-      "This keeps communication clear, decisions fast, and outcomes aligned. What you discuss is what gets built, without interpretation gaps or delays.",
+      "You talk directly to the person building your site. No project manager passing notes.",
     icon: UserCheck,
   },
   {
-    title: "Built for conversion",
+    title: "Clarity first",
     short:
-      "We don’t try to do everything. We build conversion-focused websites, and we do them well.",
-    long:
-      "Instead of stretching across services, we specialise. This allows us to refine our process, patterns, and judgment around what actually converts.",
-    icon: Target,
+      "Most agencies start designing before they’ve clarified what your visitor is deciding. We do that first.",
+    icon: Focus,
+  },
+  {
+    title: "Delivered fast",
+    short:
+      "Most agencies take 4-6 weeks. We deliver in ~2 weeks.",
+    icon: Zap,
+  },
+  {
+    title: "Built for service businesses",
+    short:
+      "We only build for service businesses, so your pages are structured around the decisions that drive enquiries and bookings.",
+    icon: Compass,
   },
 ]
 
 export default function WhyChoose() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   return (
-    <section id="why" className="bg-[#fefbf8] py-24 sm:py-12">
+    <section id="why" className="bg-[#fefbf8] py-24 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
@@ -63,8 +52,8 @@ export default function WhyChoose() {
           </p>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b]">
-            Built for businesses that value{" "}
-            <span className="text-[#ff751f]">clarity</span>
+            Why service businesses choose{" "}
+            <span className="text-[#ff751f]">ClaroVista</span>
           </h2>
         </motion.div>
 
@@ -72,8 +61,6 @@ export default function WhyChoose() {
         <div className="mt-16 grid gap-8 sm:grid-cols-2">
           {reasons.map((reason, index) => {
             const Icon = reason.icon
-            const isOpen = openIndex === index
-
             return (
               <motion.div
                 key={index}
@@ -104,35 +91,9 @@ export default function WhyChoose() {
                   {reason.title}
                 </h3>
 
-                {/* Short description */}
                 <p className="mt-3 text-[#6f6761] leading-relaxed">
                   {reason.short}
                 </p>
-
-                {/* Learn more */}
-                <button
-                  onClick={() =>
-                    setOpenIndex(isOpen ? null : index)
-                  }
-                  className="mt-4 text-sm font-medium text-[#ff751f] hover:underline"
-                >
-                  {isOpen ? "Show less" : "Learn more →"}
-                </button>
-
-                {/* Expanded content */}
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="mt-4 text-sm text-[#6f6761] leading-relaxed overflow-hidden"
-                    >
-                      {reason.long}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
               </motion.div>
             )
           })}
