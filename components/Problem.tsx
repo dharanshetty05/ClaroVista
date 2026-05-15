@@ -1,112 +1,179 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { EyeOff, HelpCircle, MousePointerClick } from "lucide-react"
+import {
+  EyeOff,
+  ShieldAlert,
+  MousePointerClick,
+} from "lucide-react"
 
 const problems = [
   {
     icon: EyeOff,
-    title: "Confusing first scroll",
+    title: "Visitors can’t quickly understand the business",
     description:
-      "Visitors land, but can’t instantly tell what you do (or who it’s for).",
+      "If the first few seconds feel unclear, people hesitate instead of exploring further.",
   },
   {
-    icon: HelpCircle,
-    title: "Lack of direction",
+    icon: ShieldAlert,
+    title: "Important trust signals are missing",
     description:
-      "Important details (pricing, process, credibility, next step) are missing or unclear.",
+      "Visitors look for reassurance before reaching out. Missing details create uncertainty.",
   },
   {
     icon: MousePointerClick,
-    title: "Weak CTA (or none)",
+    title: "Taking the next step feels unclear",
     description:
-      "There’s no obvious next step, or booking feels like effort.",
+      "Even interested visitors leave when the path to enquire feels confusing or effort-heavy.",
   },
 ]
 
 export default function Problem() {
   return (
-    <section id="problem" className="bg-[#fefbf8] py-24 sm:py-32">
+    <section
+      id="problem"
+      className="bg-[#fefbf8] py-24 sm:py-32"
+    >
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-3xl"
+          className="max-w-4xl"
         >
-          <p className="text-sm uppercase tracking-wide text-[#26201b]/60">
-            The problem
+          <p
+            className="
+              text-sm
+              uppercase
+              tracking-[0.18em]
+              text-[#26201b]/55
+              font-medium
+            "
+          >
+            Why visitors leave
           </p>
 
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
-            Traffic isn’t the issue.{" "}
-            <span className="text-[#ff751f]">Clarity is.</span>
+          <h2
+            className="
+              mt-5
+              text-3xl sm:text-4xl lg:text-5xl
+              font-bold
+              leading-[1.12]
+              tracking-tight
+              text-[#26201b]
+              max-w-4xl
+            "
+          >
+            Most websites don’t lose visitors immediately.
+            <span className="block text-[#e86a1c]">
+              They lose confidence gradually.
+            </span>
           </h2>
 
-          <p className="mt-6 text-lg text-[#6f6761]">
-            Most service websites don’t fail because of traffic.
-            They fail because visitors don’t know what to do.
+          <p
+            className="
+              mt-7
+              max-w-3xl
+              text-lg sm:text-xl
+              leading-relaxed
+              text-[#6f6761]
+            "
+          >
+            Small moments of uncertainty add up quickly. When visitors
+            struggle to understand your business, trust your expertise,
+            or know what to do next, they usually leave quietly.
           </p>
         </motion.div>
 
-        {/* Problem cards */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {/* PROBLEM CARDS */}
+        <div className="mt-16 grid gap-6 lg:grid-cols-3">
           {problems.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
               viewport={{ once: true }}
               transition={{
                 duration: 0.5,
                 ease: "easeOut",
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 180,
-                damping: 20,
+                delay: index * 0.08,
               }}
               className="
-                group
                 rounded-2xl
-                bg-white
-                p-6
-                ring-1 ring-[#26201b]/10
-                transition
+                bg-white/90
+                p-7
+                ring-1 ring-[#26201b]/8
+                transition-colors duration-300
+                hover:ring-[#26201b]/14
               "
             >
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#ff751f]/10">
-                  <item.icon className="h-5 w-5 text-[#ff751f] transition group-hover:scale-105" />
+              <div className="flex items-start gap-4">
+                <div
+                  className="
+                    flex h-11 w-11 shrink-0
+                    items-center justify-center
+                    rounded-full
+                    bg-[#f3e6dd]
+                  "
+                >
+                  <item.icon className="h-5 w-5 text-[#d96a24]" />
                 </div>
 
-                <h3 className="text-lg font-medium text-[#26201b]">
-                  {item.title}
-                </h3>
-              </div>
+                <div>
+                  <h3
+                    className="
+                      text-lg
+                      font-medium
+                      leading-snug
+                      text-[#26201b]
+                    "
+                  >
+                    {item.title}
+                  </h3>
 
-              <p className="mt-4 text-[#6f6761]">
-                {item.description}
-              </p>
+                  <p
+                    className="
+                      mt-3
+                      leading-relaxed
+                      text-[#6f6761]
+                    "
+                  >
+                    {item.description}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Closing insight */}
+        {/* CLOSING INSIGHT */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          className="mt-20 max-w-2xl"
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+            delay: 0.15,
+          }}
+          className="mt-28 max-w-3xl"
         >
           <p className="text-lg text-[#6f6761]">
-            Visitors don’t leave because they aren’t interested.
+            Visitors rarely leave because they aren’t interested.
           </p>
 
-          <p className="mt-3 text-xl font-medium text-[#26201b]">
+          <p
+            className="
+              mt-4
+              text-2xl sm:text-3xl
+              font-medium
+              leading-snug
+              tracking-tight
+              text-[#26201b]
+            "
+          >
             They leave because deciding feels harder than leaving.
           </p>
         </motion.div>
