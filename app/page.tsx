@@ -14,7 +14,10 @@ import WhyChoose from "@/components/WhyChoose";
 export default function Home() {
   return (
     <>
+      {/* Navbar */}
       <Navbar />
+
+      {/* Sections */}
       <Hero />
       <Problem />
       <Projects />
@@ -25,6 +28,8 @@ export default function Home() {
       <BrandSlider />
       <Transparency />
       <Contact />
+
+      {/* Footer */}
       <Footer />
     </>
   )
