@@ -5,32 +5,46 @@ import { motion } from "framer-motion"
 const steps = [
   {
     step: "01",
-    title: "Discovery call (30-45 min)",
-    outcome: "We ask the questions most designers skip.",
+    title: "Discovery & direction",
+    outcome:
+      "Understanding the business before designing the website.",
     description:
-      "We talk through what your business does, who your customers are, and what is stopping people from reaching out.",
+      "We discuss your business, audience, goals, and where visitors may currently hesitate before reaching out.",
   },
   {
     step: "02",
-    title: "Wireframe + design (3-5 days)",
-    outcome: "You see the structure before visuals.",
+    title: "Planning & structure",
+    outcome:
+      "Creating a website flow that feels easy to understand.",
     description:
-      "We map out page flow first so you can see exactly how the site will guide a visitor before a single colour is chosen.",
+      "We define the layout, messaging structure, scope, and enquiry flow before moving into visual design.",
   },
   {
     step: "03",
-    title: "Build + launch (5-7 days)",
-    outcome: "Clean development with a clear handover.",
+    title: "Design & development",
+    outcome:
+      "Building a website that feels modern and trustworthy.",
     description:
-      "You get the live site plus a handover call so you know exactly what you have and how to update it.",
+      "The website is designed and developed responsively with attention to clarity, performance, and visitor confidence.",
+  },
+  {
+    step: "04",
+    title: "Launch & support",
+    outcome:
+      "A smooth launch with guidance after handoff.",
+    description:
+      "Once the website is live, support is included during the first month for updates, fixes, and questions.",
   },
 ]
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="bg-[#fefbf8] py-24 sm:py-32">
+    <section
+      id="process"
+      className="bg-[#fefbf8] py-24 sm:py-28"
+    >
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,62 +52,137 @@ export default function HowItWorks() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <p className="text-sm uppercase tracking-wide text-[#26201b]/60">
-            How it works
+          <p
+            className="
+              text-sm
+              uppercase
+              tracking-[0.18em]
+              text-[#26201b]/55
+              font-medium
+            "
+          >
+            The process
           </p>
 
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#26201b] leading-snug">
-            A simple 3-step process to get your site live quickly.
+          <h2
+            className="
+              mt-5
+              text-3xl sm:text-[38px]
+              font-bold
+              leading-[1.15]
+              tracking-tight
+              text-[#26201b]
+            "
+          >
+            A clear process from first conversation to launch.
           </h2>
 
-          <p className="mt-6 text-[#6f6761] max-w-2xl">
-            Clear scope, direct communication, and fast execution from first call to launch.
+          <p
+            className="
+              mt-6
+              max-w-2xl
+              text-base sm:text-lg
+              leading-relaxed
+              text-[#6f6761]
+            "
+          >
+            Every project is planned around your business goals,
+            visitor experience, and the actions you want people
+            to take.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-3">
+        {/* STEPS */}
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, index) => (
             <motion.div
               key={step.step}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
                 duration: 0.5,
                 ease: "easeOut",
-                delay: index * 0.1,
+                delay: index * 0.08,
               }}
-              className="rounded-2xl border border-[#26201b]/10 bg-white p-8 hover:border-[#ff751f]/40 transition-colors"
+              className="
+                rounded-2xl
+                border border-[#26201b]/8
+                bg-white/90
+                p-7
+                transition-colors duration-300
+                hover:border-[#26201b]/14
+              "
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#ff751f]">
+              <p
+                className="
+                  text-xs
+                  font-semibold
+                  uppercase
+                  tracking-[0.14em]
+                  text-[#d96a24]
+                "
+              >
                 Step {step.step}
               </p>
 
-              <h3 className="mt-3 text-xl font-bold text-[#26201b] leading-snug">
+              <h3
+                className="
+                  mt-4
+                  text-lg
+                  font-semibold
+                  leading-snug
+                  text-[#26201b]
+                "
+              >
                 {step.title}
               </h3>
 
-              <p className="mt-4 text-sm font-semibold text-[#26201b]/80">
+              <p
+                className="
+                  mt-4
+                  text-sm
+                  font-medium
+                  leading-relaxed
+                  text-[#26201b]/80
+                "
+              >
                 {step.outcome}
               </p>
 
-              <p className="mt-2 text-sm text-[#6f6761] leading-relaxed">
+              <p
+                className="
+                  mt-3
+                  text-sm
+                  leading-relaxed
+                  text-[#6f6761]
+                "
+              >
                 {step.description}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Reassurance */}
+        {/* REASSURANCE */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-12 text-center text-sm text-[#26201b]/60"
+          transition={{
+            duration: 0.5,
+            delay: 0.2,
+          }}
+          className="
+            mt-16
+            max-w-2xl
+            text-sm
+            leading-relaxed
+            text-[#26201b]/55
+          "
         >
-          No long retainers and no confusing handoffs. Just a clear path to a conversion-focused website.
+          The goal is to keep the project clear, collaborative,
+          and easy to move through from start to finish.
         </motion.p>
       </div>
     </section>
