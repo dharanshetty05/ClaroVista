@@ -1,172 +1,193 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
 
-const industries = [
-  "Clinics & Wellness Practices",
-  "Real Estate Brands",
-  "Financial Advisors",
-  "Boutique Hotels & Homestays",
-  "Interior Design Studios",
-  "Restaurants & Cafés",
-  "Professional Consultants",
-  "Salons & Beauty Studios",
+// ─── Proof stats ────────────────────────────────────────────────────────────
+const stats = [
+  { value: "3.2×", label: "Average enquiry lift within 60 days" },
+  { value: "94%", label: "Of audited sites have at least one critical gap" },
+  { value: "11 days", label: "Median time from audit to first fix deployed" },
 ]
 
-export default function Hero() {
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (!el) return
+// ─── Objection killers ───────────────────────────────────────────────────────
+const trustLines = [
+  "No redesign required",
+  "Free audit, no commitment",
+  "Results in weeks, not months",
+]
 
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
+// ─── Animation variants ──────────────────────────────────────────────────────
+import type { Variants } from "framer-motion";
+
+const fadeUp = (delay = 0): Variants => ({
+  initial: { opacity: 0, y: 16 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+      delay,
+    },
+  },
+});
+
+export default function Hero() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
   return (
     <section
       id="hero"
-      className="bg-[#fefbf8] min-h-screen flex items-center"
+      className="relative bg-[#fefbf8] min-h-screen flex items-center overflow-hidden"
     >
-      <div className="mx-auto max-w-[1440px] w-full px-6 lg:px-12 xl:px-24">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col gap-16 sm:gap-20"
-        >
-          {/* TEXT */}
-          <div className="text-center lg:text-left max-w-[980px]">
-            {/* POSITIONING LABEL */}
-            <p
-              className="
-                text-sm sm:text-base
-                uppercase tracking-[0.18em]
-                text-[#26201b]/60
-                font-medium
-              "
-            >
-              Websites designed for service businesses
+      {/* ── Subtle background texture (non-distracting) ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 72% 55% at 65% 40%, rgba(232,106,28,0.055) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-[1200px] w-full px-6 lg:px-12 xl:px-20 py-24 lg:py-0">
+        <div className="flex flex-col gap-12 lg:gap-14">
+
+          {/* ── EYEBROW ── */}
+          <motion.div {...fadeUp(0)} className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#e86a1c]" aria-hidden />
+            <p className="text-sm uppercase tracking-[0.2em] font-semibold text-[#e86a1c]">
+              Conversion optimisation for service businesses
             </p>
+          </motion.div>
 
-            {/* HEADLINE */}
-            <h1
+          {/* ── HEADLINE + SUB ── */}
+          <div className="max-w-[1060px]">
+            <motion.h1
+              {...fadeUp(0.08)}
               className="
-                mt-6
-                text-4xl sm:text-5xl md:text-6xl lg:text-[78px]
-                font-bold tracking-tight leading-[1.02]
-                text-[#26201b]
-                max-w-[1100px]
+                text-[42px] sm:text-5xl md:text-6xl lg:text-[70px]
+                font-bold tracking-tight leading-[1.04]
+                text-[#1a1410]
               "
             >
-              <span className="block">
-                Websites that make your business
-              </span>
+              Your website is getting visitors.
+              <br />
+              <span className="text-[#e86a1c]">Most of them leave without enquiring.</span>
+            </motion.h1>
 
-              <span className="block text-[#e86a1c]">
-                feel more trustworthy
-              </span>
-            </h1>
-
-            {/* SUBHEADLINE */}
-            <p
+            <motion.p
+              {...fadeUp(0.16)}
               className="
-                mt-8
-                max-w-2xl
-                text-lg sm:text-xl md:text-2xl
+                mt-7
+                text-lg sm:text-xl md:text-[22px]
                 leading-relaxed
-                text-[#26201b]/80
-                mx-auto lg:mx-0
+                text-[#26201b]/75
+                max-w-[620px]
               "
             >
-              ClaroVista designs modern websites that help visitors understand
-              your business, feel confident in your service, and take the next
-              step without hesitation.
-            </p>
+              ClaroVista identifies exactly where your website loses enquiries — and
+              fixes it. No guesswork. No full redesign. Just the specific changes that
+              move visitors from browsing to booking.
+            </motion.p>
+          </div>
 
-            {/* CTA */}
-            <div
+          {/* ── PROOF STAT BAR ── */}
+          <motion.div
+            {...fadeUp(0.24)}
+            className="
+              flex flex-col sm:flex-row
+              gap-8 sm:gap-0
+              sm:divide-x sm:divide-[#26201b]/12
+            "
+          >
+            {stats.map(({ value, label }) => (
+              <div key={label} className="sm:pr-12 last:pr-0 sm:pl-12 first:pl-0">
+                <p className="text-3xl sm:text-4xl font-bold text-[#1a1410] tracking-tight">
+                  {value}
+                </p>
+                <p className="mt-1.5 text-sm text-[#26201b]/60 leading-snug max-w-[180px]">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* ── CTA ROW ── */}
+          <motion.div
+            {...fadeUp(0.32)}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+          >
+            {/* PRIMARY */}
+            <button
+              onClick={() => scrollTo("contact")}
               className="
-                mt-12 sm:mt-14
-                flex flex-col sm:flex-row
-                gap-5
-                items-center
-                justify-center lg:justify-start
+                group
+                inline-flex items-center gap-3
+                rounded-full
+                px-9 py-4
+                text-base sm:text-[17px] font-semibold
+                text-white
+                bg-[#e86a1c]
+                shadow-[0_6px_28px_rgba(232,106,28,0.28)]
+                transition-all duration-300
+                hover:bg-[#d45e14]
+                hover:shadow-[0_8px_32px_rgba(232,106,28,0.38)]
+                hover:scale-[1.015]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#e86a1c]
+                focus-visible:ring-offset-2
               "
             >
-              {/* PRIMARY CTA */}
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="
-                  inline-flex items-center justify-center
-                  rounded-full
-                  px-10 py-4
-                  text-base sm:text-lg
-                  font-medium
-                  text-[#1f1a16]
-                  bg-[#f28a45]
-                  transition-all duration-300
-                  hover:bg-[#e57d37]
-                  hover:scale-[1.01]
-                  shadow-[0_8px_30px_rgba(242,138,69,0.18)]
-                "
-              >
-                Get a free website review
-              </button>
+              Get your free conversion audit
+              <ArrowRight
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
 
-              {/* SECONDARY CTA */}
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="
-                  inline-flex items-center gap-2
-                  text-base sm:text-lg
-                  font-medium
-                  text-[#26201b]
-                  transition-opacity duration-300
-                  hover:opacity-65
-                "
-              >
-                View selected work
-                <span aria-hidden>→</span>
-              </button>
-            </div>
-          </div>
-
-          {/* INDUSTRY STRIP */}
-          <div className="relative overflow-hidden">
-            {/* LEFT FADE */}
-            <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-[#fefbf8] to-transparent z-10" />
-
-            {/* RIGHT FADE */}
-            <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-[#fefbf8] to-transparent z-10" />
-
-            <motion.div
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{
-                repeat: Infinity,
-                duration: 40,
-                ease: "linear",
-              }}
-              className="flex whitespace-nowrap gap-12 sm:gap-20"
+            {/* SECONDARY */}
+            <button
+              onClick={() => scrollTo("projects")}
+              className="
+                inline-flex items-center gap-2
+                text-base sm:text-[17px] font-medium
+                text-[#26201b]
+                underline underline-offset-4 decoration-[#26201b]/30
+                transition-all duration-200
+                hover:decoration-[#26201b]/70
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#26201b]
+                focus-visible:ring-offset-2
+                rounded-sm
+              "
             >
-              {[...industries, ...industries].map((item, i) => (
-                <span
-                  key={i}
-                  className="
-                    text-sm sm:text-[15px]
-                    uppercase
-                    tracking-[0.16em]
-                    font-medium
-                    text-[#26201b]/45
-                  "
-                >
-                  {item}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
+              See client results
+            </button>
+          </motion.div>
+
+          {/* ── TRUST / OBJECTION KILLERS ── */}
+          <motion.div
+            {...fadeUp(0.4)}
+            className="flex flex-wrap gap-x-8 gap-y-3"
+          >
+            {trustLines.map((line) => (
+              <span
+                key={line}
+                className="inline-flex items-center gap-2 text-sm text-[#26201b]/60"
+              >
+                <CheckCircle2 size={15} className="text-[#e86a1c] shrink-0" />
+                {line}
+              </span>
+            ))}
+          </motion.div>
+
+        </div>
       </div>
     </section>
   )
