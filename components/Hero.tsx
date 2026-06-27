@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 
-// ─── Proof stats ────────────────────────────────────────────────────────────
 const stats = [
   { value: "3.2×", label: "Average enquiry lift within 60 days" },
   { value: "94%", label: "Of audited sites have at least one critical gap" },
@@ -143,7 +142,7 @@ export default function Hero() {
                 focus-visible:ring-offset-2
               "
             >
-              Get your free conversion audit
+              Get your free site audit
               <ArrowRight
                 size={18}
                 className="transition-transform duration-300 group-hover:translate-x-1"
