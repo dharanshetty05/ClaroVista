@@ -1,149 +1,211 @@
 "use client"
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X, ArrowRight } from "lucide-react"
+
+// ─── Navigation links ─────────────────────────────────────────────────────────
+const navLinks = [
+  { label: "Why sites lose enquiries", id: "problem" },
+  { label: "How it works", id: "process" },
+  { label: "Results", id: "projects" },
+]
+
+const CTA_LABEL = "Get a free audit"
+const CTA_ID = "contact"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (!el) return
+  // ── Scroll detection ──────────────────────────────────────────────────────
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
+  // ── Lock body scroll when mobile menu open ────────────────────────────────
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
+  }, [open])
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
+    setOpen(false)
   }
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-[#fefbf8]/80 backdrop-blur border-b border-[#26201b]/10">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="text-lg font-semibold text-[#26201b]"
-          >
-            ClaroVista<span className="text-[#ff751f]">.</span>
-          </button>
+    <>
+      <header
+        className={`
+          fixed top-0 left-0 z-50 w-full
+          transition-all duration-300
+          ${scrolled
+            ? "bg-[#fefbf8]/92 backdrop-blur-md border-b border-[#26201b]/10 shadow-[0_1px_24px_rgba(38,32,27,0.06)]"
+            : "bg-[#fefbf8]/70 backdrop-blur-sm border-b border-transparent"
+          }
+        `}
+      >
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 xl:px-20">
+          <div className="flex h-[68px] items-center justify-between gap-8">
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+            {/* ── LOGO ── */}
             <button
-              onClick={() => scrollToSection("problem")}
-              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
-            >
-              Why websites fail
-            </button>
-            <button
-              onClick={() => scrollToSection("process")}
-              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
-            >
-              Process
-            </button>
-            <button
-              onClick={() => scrollToSection("how-we-work")}
-              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
-            >
-              How we work
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-sm text-[#26201b]/70 hover:text-[#26201b] transition"
-            >
-              Work
-            </button>
-
-            {/* Primary CTA */}
-            <button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollTo("hero")}
               className="
-                ml-2 inline-flex items-center justify-center
-                rounded-full
-                px-5 py-2
-                text-sm font-medium text-black
-                bg-gradient-to-r from-[#ff751f] to-[#ff9a4d]
-                shadow-[0_0_18px_rgba(255,117,31,0.45)]
-                transition hover:shadow-[0_0_28px_rgba(255,117,31,0.6)]
+                shrink-0 text-[17px] font-bold tracking-tight text-[#1a1410]
+                focus-visible:outline-none focus-visible:ring-2
+                focus-visible:ring-[#e86a1c] focus-visible:ring-offset-2 rounded-sm
+              "
+              aria-label="ClaroVista — back to top"
+            >
+              Claro<span className="text-[#e86a1c]">Vista</span>
+            </button>
+
+            {/* ── DESKTOP NAV ── */}
+            <nav className="hidden md:flex items-center gap-7" aria-label="Primary">
+              {navLinks.map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="
+                    text-[14px] font-medium text-[#26201b]/60
+                    hover:text-[#26201b]
+                    transition-colors duration-200
+                    focus-visible:outline-none focus-visible:ring-2
+                    focus-visible:ring-[#e86a1c] focus-visible:ring-offset-2 rounded-sm
+                  "
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+
+            {/* ── DESKTOP CTA ── */}
+            <button
+              onClick={() => scrollTo(CTA_ID)}
+              className={`
+                hidden md:inline-flex items-center gap-2 shrink-0
+                rounded-full px-5 py-2.5
+                text-[14px] font-semibold
+                transition-all duration-300
+                focus-visible:outline-none focus-visible:ring-2
+                focus-visible:ring-[#e86a1c] focus-visible:ring-offset-2
+                ${scrolled
+                  ? "bg-[#e86a1c] text-white shadow-[0_4px_20px_rgba(232,106,28,0.25)] hover:bg-[#d45e14] hover:shadow-[0_4px_24px_rgba(232,106,28,0.38)]"
+                  : "bg-[#e86a1c]/10 text-[#e86a1c] hover:bg-[#e86a1c]/16"
+                }
+              `}
+            >
+              {CTA_LABEL}
+              <ArrowRight size={14} className="shrink-0" />
+            </button>
+
+            {/* ── MOBILE TOGGLE ── */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="
+                md:hidden p-1.5 -mr-1.5 rounded-md
+                text-[#26201b]
+                transition-colors hover:bg-[#26201b]/6
+                focus-visible:outline-none focus-visible:ring-2
+                focus-visible:ring-[#e86a1c]
+              "
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+
+          </div>
+        </div>
+      </header>
+
+      {/* ── MOBILE DRAWER ── */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-[#1a1410]/30 backdrop-blur-sm md:hidden"
+              aria-hidden
+              onClick={() => setOpen(false)}
+            />
+
+            {/* Drawer panel */}
+            <motion.div
+              key="drawer"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="
+                fixed top-[68px] left-0 right-0 z-50
+                bg-[#fefbf8]
+                border-b border-[#26201b]/10
+                shadow-[0_8px_40px_rgba(26,20,16,0.12)]
+                md:hidden
               "
             >
-              Free website review
-            </button>
-          </nav>
+              <nav
+                className="flex flex-col px-6 pt-5 pb-7 gap-1"
+                aria-label="Mobile navigation"
+              >
+                {navLinks.map(({ label, id }, i) => (
+                  <motion.button
+                    key={id}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.2 }}
+                    onClick={() => scrollTo(id)}
+                    className="
+                      text-left text-[16px] font-medium text-[#26201b]
+                      py-3.5 border-b border-[#26201b]/8
+                      hover:text-[#e86a1c] transition-colors duration-150
+                      focus-visible:outline-none focus-visible:text-[#e86a1c]
+                    "
+                  >
+                    {label}
+                  </motion.button>
+                ))}
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-[#26201b]"
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+                {/* Mobile CTA */}
+                <motion.button
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navLinks.length * 0.05 + 0.04, duration: 0.22 }}
+                  onClick={() => scrollTo(CTA_ID)}
+                  className="
+                    mt-5 w-full inline-flex items-center justify-center gap-2
+                    rounded-full px-6 py-3.5
+                    text-[15px] font-semibold text-white
+                    bg-[#e86a1c]
+                    shadow-[0_4px_24px_rgba(232,106,28,0.28)]
+                    hover:bg-[#d45e14] transition-colors duration-200
+                    focus-visible:outline-none focus-visible:ring-2
+                    focus-visible:ring-[#e86a1c] focus-visible:ring-offset-2
+                  "
+                >
+                  {CTA_LABEL}
+                  <ArrowRight size={16} />
+                </motion.button>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-[#26201b]/10 bg-[#fefbf8]">
-          <nav className="flex flex-col px-6 py-6 gap-5">
-            <button
-              onClick={() => {
-                scrollToSection("problem")
-                setOpen(false)
-              }}
-              className="text-[#26201b] text-left"
-            >
-              Why websites fail
-            </button>
-            <button
-              onClick={() => {
-                scrollToSection("process")
-                setOpen(false)
-              }}
-              className="text-[#26201b] text-left"
-            >
-              Process
-            </button>
-            <button
-              onClick={() => {
-                scrollToSection("how-we-work")
-                setOpen(false)
-              }}
-              className="text-[#26201b] text-left"
-            >
-              How we work
-            </button>
-            <button
-              onClick={() => {
-                scrollToSection("projects")
-                setOpen(false)
-              }}
-              className="text-[#26201b] text-left"
-            >
-              Work
-            </button>
-
-            {/* Mobile CTA */}
-            <button
-              onClick={() => {
-                scrollToSection("contact")
-                setOpen(false)
-              }}
-              className="
-                mt-2 inline-flex justify-center
-                rounded-full
-                px-5 py-3
-                text-black font-medium
-                bg-gradient-to-r from-[#ff751f] to-[#ff9a4d]
-                shadow-[0_0_20px_rgba(255,117,31,0.45)]
-              "
-            >
-              Free website review
-            </button>
-          </nav>
-        </div>
-      )}
-    </header>
+                {/* Trust micro-line */}
+                <p className="mt-3 text-center text-[13px] text-[#26201b]/45">
+                  Free. No commitment. Results in weeks.
+                </p>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
