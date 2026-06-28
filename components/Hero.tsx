@@ -166,7 +166,7 @@ export default function Hero() {
                 rounded-sm
               "
             >
-              See client results
+              See our work
             </button>
           </motion.div>
 

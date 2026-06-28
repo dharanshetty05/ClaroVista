@@ -1,182 +1,179 @@
 "use client"
 
 import { motion } from "framer-motion"
-import {
-  EyeOff,
-  ShieldAlert,
-  MousePointerClick,
-} from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
+// ─── Problem items ─────────────────────────────────────────────────────────
+// Each item: a specific scenario (not a category) + a single sharp consequence
 const problems = [
   {
-    icon: EyeOff,
-    title: "Visitors can’t quickly understand the business",
-    description:
-      "If the first few seconds feel unclear, people hesitate instead of exploring further.",
+    scenario: "Your value isn't clear in the first 8 seconds",
+    consequence:
+      "Visitors don't scroll to learn more — they leave and try a competitor who explained themselves faster.",
   },
   {
-    icon: ShieldAlert,
-    title: "Important trust signals are missing",
-    description:
-      "Visitors look for reassurance before reaching out. Missing details create uncertainty.",
+    scenario: "Trust signals are absent or buried",
+    consequence:
+      "People want proof before they pick up the phone. Without it, interest stalls and the enquiry never comes.",
   },
   {
-    icon: MousePointerClick,
-    title: "Taking the next step feels unclear",
-    description:
-      "Even interested visitors leave when the path to enquire feels confusing or effort-heavy.",
+    scenario: "The next step requires effort to find",
+    consequence:
+      "Even motivated visitors won't search for your contact form. Friction at the finish line kills warm leads.",
   },
 ]
 
-export default function Problem() {
-  return (
-    <section
-      id="problem"
-      className="bg-[#fefbf8] py-24 sm:py-32"
-    >
-      <div className="mx-auto max-w-7xl px-6">
-        {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
-          <p
-            className="
-              text-sm
-              uppercase
-              tracking-[0.18em]
-              text-[#26201b]/55
-              font-medium
-            "
-          >
-            Why visitors leave
-          </p>
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.52, ease: [0.22, 1, 0.36, 1], delay },
+})
 
-          <h2
-            className="
-              mt-5
-              text-3xl sm:text-4xl lg:text-5xl
-              font-bold
-              leading-[1.12]
-              tracking-tight
-              text-[#26201b]
-              max-w-4xl
-            "
-          >
-            Most websites don’t lose visitors immediately.
-            <span className="block text-[#e86a1c]">
-              They lose confidence gradually.
+export default function Problem() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  return (
+    <section id="problem" className="bg-[#fefbf8] py-24 sm:py-32">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-12 xl:px-20">
+
+        {/* ── HEADER ── */}
+        <motion.div {...fadeUp(0)} className="max-w-[720px]">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#e86a1c]" aria-hidden />
+            <p className="text-sm uppercase tracking-[0.2em] font-semibold text-[#e86a1c]">
+              The conversion gap
+            </p>
+          </div>
+
+          <h2 className="
+            mt-6
+            text-3xl sm:text-4xl lg:text-[52px]
+            font-bold leading-relaxed tracking-tight
+            text-[#1a1410]
+          ">
+            Traffic isn't your problem.
+            <span className="block text-[#e86a1c] mt-1">
+              Your website is losing the enquiries it should be closing.
             </span>
           </h2>
 
-          <p
-            className="
-              mt-7
-              max-w-3xl
-              text-lg sm:text-xl
-              leading-relaxed
-              text-[#6f6761]
-            "
-          >
-            Small moments of uncertainty add up quickly. When visitors
-            struggle to understand your business, trust your expertise,
-            or know what to do next, they usually leave quietly.
+          <p className="mt-7 text-lg sm:text-[19px] leading-relaxed text-[#26201b]/65 max-w-[580px]">
+            Most service businesses have more than enough visitors. The problem
+            is the website — it creates hesitation at exactly the moments when
+            visitors should be reaching out.
           </p>
         </motion.div>
 
-        {/* PROBLEM CARDS */}
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {problems.map((item, index) => (
+        {/* ── DIAGNOSTIC LIST ── */}
+        <div className="mt-16 sm:mt-20 flex flex-col gap-0">
+          {problems.map(({ scenario, consequence }, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                ease: "easeOut",
-                delay: index * 0.08,
-              }}
+              key={scenario}
+              {...fadeUp(0.1 + i * 0.1)}
               className="
-                rounded-2xl
-                bg-white/90
-                p-7
-                ring-1 ring-[#26201b]/8
-                transition-colors duration-300
-                hover:ring-[#26201b]/14
+                group
+                flex gap-7
+                py-9
+                border-b border-[#26201b]/8
+                first:border-t first:border-[#26201b]/8
               "
             >
-              <div className="flex items-start gap-4">
-                <div
-                  className="
-                    flex h-11 w-11 shrink-0
-                    items-center justify-center
-                    rounded-full
-                    bg-[#f3e6dd]
-                  "
-                >
-                  <item.icon className="h-5 w-5 text-[#d96a24]" />
-                </div>
+              {/* Index marker */}
+              <div className="shrink-0 pt-0.5">
+                <span className="
+                  block w-7 h-7
+                  rounded-full
+                  text-xs font-bold
+                  text-[#e86a1c]
+                  bg-[#e86a1c]/10
+                  flex items-center justify-center
+                  select-none
+                ">
+                  {i + 1}
+                </span>
+              </div>
 
-                <div>
-                  <h3
-                    className="
-                      text-lg
-                      font-medium
-                      leading-snug
-                      text-[#26201b]
-                    "
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p
-                    className="
-                      mt-3
-                      leading-relaxed
-                      text-[#6f6761]
-                    "
-                  >
-                    {item.description}
-                  </p>
-                </div>
+              {/* Content */}
+              <div className="flex flex-col gap-2.5 lg:flex-row lg:gap-16 lg:items-start">
+                <h3 className="
+                  text-[18px] sm:text-[20px] font-semibold
+                  leading-snug tracking-tight
+                  text-[#1a1410]
+                  lg:w-[340px] lg:shrink-0
+                ">
+                  {scenario}
+                </h3>
+                <p className="
+                  text-[16px] sm:text-[17px]
+                  leading-relaxed
+                  text-[#26201b]/60
+                  lg:max-w-[440px]
+                ">
+                  {consequence}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* CLOSING INSIGHT */}
+        {/* ── CLOSING PIVOT ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.15,
-          }}
-          className="mt-28 max-w-3xl"
+          {...fadeUp(0.42)}
+          className="
+            mt-16 sm:mt-20
+            flex flex-col sm:flex-row
+            items-start sm:items-center
+            justify-between
+            gap-8
+            rounded-2xl
+            bg-[#1a1410]
+            px-8 sm:px-10 py-9 sm:py-10
+          "
         >
-          <p className="text-lg text-[#6f6761]">
-            Visitors rarely leave because they aren’t interested.
-          </p>
+          <div>
+            <p className="text-[13px] uppercase tracking-[0.18em] font-semibold text-[#e86a1c]">
+              The pattern is consistent
+            </p>
+            <p className="
+              mt-3
+              text-[22px] sm:text-[26px]
+              font-semibold leading-snug tracking-tight
+              text-white
+              max-w-[480px]
+            ">
+              94% of audited sites have at least one of these gaps. Usually more than one.
+            </p>
+          </div>
 
-          <p
+          <button
+            onClick={() => scrollTo("process")}
             className="
-              mt-4
-              text-2xl sm:text-3xl
-              font-medium
-              leading-snug
-              tracking-tight
-              text-[#26201b]
+              group shrink-0
+              inline-flex items-center gap-3
+              rounded-full px-7 py-3.5
+              text-[15px] font-semibold
+              text-[#1a1410]
+              bg-white
+              hover:bg-[#f5ede5]
+              transition-colors duration-200
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-white
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-[#1a1410]
             "
           >
-            They leave because deciding feels harder than leaving.
-          </p>
+            See how we find them
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            />
+          </button>
         </motion.div>
+
       </div>
     </section>
   )
